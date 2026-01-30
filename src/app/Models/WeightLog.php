@@ -1,18 +1,22 @@
 <?php
 
 namespace App\Models;
-
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+// ないとエラーになるよ
 use Illuminate\Database\Eloquent\Model;
 
-class weightLog extends Model
+class WeightLog extends Model
 {
+    use HasFactory;
+   //  ないとエラーになるよ
+
    protected $fillable = [
     'user_id',
     'date',
     'weight',
     'calories',
-    'exersize_time',
-    'exersize_content',
+    'exercise_time',
+    'exercise_content',
    ];
 
    public function user() {
