@@ -1,0 +1,38 @@
+.wrapper {
+    max-width: 500px;
+    margin: 200px auto;
+    text-align: center;
+    background-color: beige;
+    padding: 50px;
+    
+}
+
+.inner {
+    max-width: 400px;
+    text-align: center;
+    margin: 0 auto;
+}
+.tab,
+.input {
+     display: block; 
+    
+    text-align: left;
+}
+.input {
+    border: 1px solid #000;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.btn {
+    margin: 20px;
+}
+.next-btn {
+    width: 120px;
+    padding: 10px;
+    background-color: aqua;
+    text-align: center;
+} 
+.link {
+    display: inline-block;
+}

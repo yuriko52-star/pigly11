@@ -1,0 +1,39 @@
+.wrapper {
+    max-width: 500px;
+    margin: 200px auto;
+    text-align: center;
+    background-color: beige;
+    padding: 50px;
+    
+}
+a {
+    text-decoration: none;
+}
+.inner {
+    max-width: 400px;
+    text-align: center;
+    margin: 0 auto;
+}
+.tab
+ {
+     display: block; 
+    
+    text-align: left;
+}
+.input {
+    border: 1px solid #000;
+    width: 375px;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+   
+}
+.btn {
+    margin: 20px;
+}
+.create-btn {
+    width: 135px;
+    padding: 10px;
+    background-color: aqua;
+    text-align: center;
+} 
