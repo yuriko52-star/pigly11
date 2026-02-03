@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // $this->call(UserTableSeeder::class);
+        $this->call(UserTableSeeder::class);
         WeightLog::factory(34)->create();
         // User::factory(10)->create();
 

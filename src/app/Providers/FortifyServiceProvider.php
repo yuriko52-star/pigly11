@@ -16,6 +16,8 @@ use Laravel\Fortify\Fortify;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Laravel\Fortify\Contracts\LoginResponse;
+
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -45,12 +47,23 @@ class FortifyServiceProvider extends ServiceProvider
             return view('auth.register1');
         });
         */
-        Fortify::loginView(function () {
+        /*Fortify::loginView(function () {
             if(auth()->check()) {
                 return redirect('admin');
             }
             return view('auth.login');
         });
+        */
+          Fortify::loginView(fn () => view('auth.login'));
+
+           $this->app->singleton(LoginResponse::class, function () {
+        return new class implements LoginResponse {
+            public function toResponse($request)
+            {
+                return redirect()->route('admin');
+            }
+        };
+    });
 
         RateLimiter::for('login', function(Request $request) {
             $email = (string) $request->email;

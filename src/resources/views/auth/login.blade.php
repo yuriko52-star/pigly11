@@ -13,17 +13,19 @@
     <div class="wrapper">
         <h1 class="site-title">PiGLy</h1>
         <h2 class="title">ログイン</h2>
-        
+        <form action="/login" method="POST">
+            @csrf
         <div class="inner">
         
         <label for="" class="tab">メールアドレス</label>
-        <input type="text" class="input" name="" placeholder="メールアドレスを入力" value="">
+        <input type="text" class="input" name="email" placeholder="メールアドレスを入力" value="">
         <label for="" class="tab">パスワード</label>
-        <input type="text" class="input" name="" placeholder="パスワードを入力" value="">
+        <input type="password" class="input" name="password" placeholder="パスワードを入力" value="">
         </div>
         <div class="btn">
             <button class="login-btn">ログイン</button>
         </div>
+        </form>
         <a href="/register/step1" class="link">アカウント作成はこちら</a>
         
     </div>
