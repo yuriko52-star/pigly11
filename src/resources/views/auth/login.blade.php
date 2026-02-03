@@ -24,7 +24,7 @@
         <div class="btn">
             <button class="login-btn">ログイン</button>
         </div>
-        <a href="" class="link">アカウント作成はこちら</a>
+        <a href="/register/step1" class="link">アカウント作成はこちら</a>
         
     </div>
 </body>

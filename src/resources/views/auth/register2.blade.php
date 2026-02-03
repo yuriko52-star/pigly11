@@ -14,17 +14,19 @@
         <h1 class="site-title">PiGLy</h1>
         <h2 class="title">新規会員登録</h2>
         <p class="sub-title">STEP2 体重データの入力</p>
+        <form action="{{ route('register.step2.store') }}" method="POST">
+            @csrf
         <div class="inner">
             <label for="" class="tab">現在の体重</label>
-            <input type="text" class="input" name="" placeholder="現在の体重を入力" value=""><span>kg</span>
+            <input type="text" class="input" name="weight" placeholder="現在の体重を入力" value=""><span>kg</span>
             <label for="" class="tab">目標の体重</label>
-            <input type="text" class="input" name="" placeholder="目標の体重を入力" value="">kg
+            <input type="text" class="input" name="target_weight" placeholder="目標の体重を入力" value="">kg
         
         </div>
         <div class="btn">
             <button class="create-btn">アカウント作成</button>
         </div>
-        
+        </form>
         
     </div>
 </body>

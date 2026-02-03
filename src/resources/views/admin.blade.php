@@ -20,7 +20,8 @@
                         </form>
                     </li>
                     <li>
-                        <form action="" class="">
+                        <form action="/logout" method="POST">
+                            @csrf
                             <button class="logout">ログアウト</button>
                         </form>
                     </li>

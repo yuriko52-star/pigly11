@@ -45,4 +45,13 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function weightTarget()
+    {
+        return $this->hasOne(weightTarget::class);
+    }
+    public function weightLogs()
+    {
+        return $this->hasMany(WeightLog::class);
+    }
 }
