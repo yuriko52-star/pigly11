@@ -16,8 +16,9 @@ use Laravel\Fortify\Fortify;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
-use Laravel\Fortify\Contracts\LoginResponse;
-
+use Laravel\Fortify\Contracts\LoginResponse; 
+use App\Http\Responses\LogoutResponse as CustomLogoutResponse;
+use Laravel\Fortify\Contracts\LogoutResponse;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -34,6 +35,7 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $this->app->singleton(LogoutResponse::class, CustomLogoutResponse::class);
         // Fortify::createUsersUsing(CreateNewUser::class);
         
         Fortify::authenticateUsing(function ($request) {
