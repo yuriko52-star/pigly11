@@ -19,17 +19,32 @@
         <div class="inner">
         <label for="" class="tab">お名前</label>
         <input type="text" class="input" name="name" placeholder="名前を入力" value="">
+        <p class="error">
+            @error('name')
+            {{ $message }}
+            @enderror
+        </p>
         <label for="" class="tab">メールアドレス</label>
         <input type="text" class="input" name="email" placeholder="メールアドレスを入力" value="">
+        <p class="error">
+            @error('email')
+            {{ $message }}
+            @enderror
+        </p>
         <label for="" class="tab">パスワード</label>
         <input type="password" class="input" name="password" placeholder="パスワードを入力" value="">
+        <p class="error">
+            @error('password')
+            {{ $message }}
+            @enderror
+        </p>
         </div>
         <div class="btn">
             <button type="submit" class="next-btn">次に進む</button>
         </div>
         </form>
         <a href="/login" class="link">ログインはこちら</a>
-       <!-- </form>  -->
+       
     </div>
 </body>
 </html>

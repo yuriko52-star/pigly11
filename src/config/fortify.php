@@ -155,5 +155,5 @@ return [
             // 'window' => 0,
         ]),
     ],
-
+//  'request' => \App\Http\Requests\LoginRequest::class,
 ];

@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\WeightLog;
 use App\Models\WeightTarget;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\RegisterRequest;
 
 
 use Illuminate\Support\Facades\Auth;
@@ -14,14 +15,9 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterStepController extends Controller
 {
-    public function storeStep1(Request $request) 
+    public function storeStep1(RegisterRequest $request) 
     {
-        $validated = $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required'
-
-        ]);
+        $validated = $request->validated();
        // セッションに保存
        session(['register' => $validated]);
        return redirect()->route('register.step2'); 
@@ -29,12 +25,13 @@ class RegisterStepController extends Controller
 
     public function storeStep2(Request $request)
     {
+        // formRequestで設定するよ
         $validated = $request->validate([
-            // バリデーション設定時に追加する予定"weightも変える予定
-            
-            'weight' => 'required',
-            'target_weight' => 'required',
-        ]);
+            'target_weight' => ['required', 'numeric'],
+            'weight' => ['required', 'numeric'],
+        ]
+
+        );
         $data = session('register');
         if(!$data) {
             return redirect()->route('register.step1');

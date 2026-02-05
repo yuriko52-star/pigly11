@@ -19,6 +19,8 @@ use App\Models\User;
 use Laravel\Fortify\Contracts\LoginResponse; 
 use App\Http\Responses\LogoutResponse as CustomLogoutResponse;
 use Laravel\Fortify\Contracts\LogoutResponse;
+// use App\Http\Requests\CustomLoginRequest;
+use Laravel\Fortify\Http\Requests\LoginRequest as FortifyLoginRequest;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -38,7 +40,18 @@ class FortifyServiceProvider extends ServiceProvider
         $this->app->singleton(LogoutResponse::class, CustomLogoutResponse::class);
         // Fortify::createUsersUsing(CreateNewUser::class);
         
-        Fortify::authenticateUsing(function ($request) {
+        Fortify::authenticateUsing(function (Request $request) {
+            $request->validate(
+                [
+                    'email' => 'required|email',
+                    'password' => 'required',
+                ],
+                [
+                     'email.required' => 'メールアドレスを入力してください',
+                    'email.email' => 'メールアドレスは「ユーザー名@ドメイン」形式で入力してください',
+                    'password.required' => 'パスワードを入力してください',
+                ]
+            );
             $user = User::where('email', $request->email)->first();
             if($user && \Hash::check($request->password, $user->password)) {
                 return $user;
@@ -72,5 +85,6 @@ class FortifyServiceProvider extends ServiceProvider
 
             return Limit::perMinute(10)->by($email . $request->ip());
         });
+        
     }
 }

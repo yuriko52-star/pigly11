@@ -36,3 +36,6 @@
 .link {
     display: inline-block;
 }
+.error {
+    color: red;
+}
