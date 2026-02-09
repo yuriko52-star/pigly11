@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class WeightLogRequest extends FormRequest
+class RegisterStep2Request extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,15 +22,18 @@ class WeightLogRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'weight' => 'required| between:0,9999 | regex:/^\d+(\.\d)?$/',
+            'weight' => 'required|numeric|between:0,9999|regex:/^\d+(\.\d)?$/',
+             'target_weight' => 'required|numeric|between:0,9999|regex:/^\d+(\.\d)?$/',
         ];
     }
-
     public function messages() {
         return [
             'weight.required' => '現在の体重を入力してください',
             'weight.between' => '4桁までの数字で入力してください',
             'weight.regex' => '小数点は1桁で入力してください',
+            'target_weight.required' => '目標の体重を入力してください',
+            'target_weight.between' => '4桁までの数字で入力してください',
+            'target_weight.regex' => '小数点は1桁で入力してください',
         ];
     }
 }

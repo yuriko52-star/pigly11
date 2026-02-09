@@ -8,6 +8,8 @@ use App\Models\WeightLog;
 use App\Models\WeightTarget;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\RegisterStep2Request;
+
 
 
 use Illuminate\Support\Facades\Auth;
@@ -23,15 +25,10 @@ class RegisterStepController extends Controller
        return redirect()->route('register.step2'); 
     }
 
-    public function storeStep2(Request $request)
+    public function storeStep2(RegisterStep2Request $request)
     {
         // formRequestで設定するよ
-        $validated = $request->validate([
-            'target_weight' => ['required', 'numeric'],
-            'weight' => ['required', 'numeric'],
-        ]
-
-        );
+        $validated = $request->validated();
         $data = session('register');
         if(!$data) {
             return redirect()->route('register.step1');

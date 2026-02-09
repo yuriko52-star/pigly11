@@ -37,3 +37,6 @@ a {
     background-color: aqua;
     text-align: center;
 } 
+.error {
+    color: red;
+}
